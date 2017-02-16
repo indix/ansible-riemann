@@ -1,11 +1,5 @@
 ---
 
-- name: Install java jdk which is a requirement for riemann
-  sudo: yes
-  apt:
-    name: openjdk-7-jdk
-    state: latest
-
 - name: Create root directory for riemann
   sudo: yes
   file:
@@ -16,7 +10,7 @@
 
 - name: Download Riemann release
   get_url:
-    url: "http://repo.indix.tv:8080/riemann_{{riemann_version}}_all.deb"
+    url: "https://github.com/riemann/riemann/releases/download/{{riemann_version}}/riemann_{{riemann_version}}_all.deb"
     dest: "{{ riemann_download_dir }}/riemann_{{riemann_version}}_all.deb"
 
 # - name: Unarchive Riemann release
