@@ -26,6 +26,7 @@ dependencies:
 
   - role: ansible-java
     sudo: yes
-    java_versions:
-      - oracle-jdk7-installer
+    openjdk_java_versions:
       - openjdk-7-jdk
+    oracle_java_versions:
+      - oracle-jdk7-installer

@@ -10,30 +10,28 @@
 
 - name: Download Riemann release
   get_url:
-    url: "https://github.com/riemann/riemann/releases/download/{{riemann_version}}/riemann_{{riemann_version}}_all.deb"
-    dest: "{{ riemann_download_dir }}/riemann_{{riemann_version}}_all.deb"
+    url: "https://github.com/riemann/riemann/releases/download/{{riemann_version}}/riemann-{{riemann_version}}.tar.bz2"
+    dest: "{{ riemann_download_dir }}/riemann-{{riemann_version}}.tar.bz2"
 
-# - name: Unarchive Riemann release
-#   unarchive:
-#     src: "{{riemann_download_dir}}/riemann-{{riemann_version}}.tar.bz2"
-#     dest: "{{riemann_root}}"
-#     copy: no
-#     creates: "{{riemann_root}}/riemann-{{riemann_version}}"
+- name: Unarchive Riemann release
+  unarchive:
+    src: "{{riemann_download_dir}}/riemann-{{riemann_version}}.tar.bz2"
+    dest: "{{riemann_root}}"
+    copy: no
+    creates: "{{riemann_root}}/riemann-{{riemann_version}}"
 
-# - name: Link Riemann release
-#   file:
-#     state: link
-#     owner: "{{ansible_ssh_user}}"
-#     group: "{{ansible_ssh_user}}"
-#     path: "{{riemann_home_dir}}"
-#     src: "{{riemann_root}}/riemann-{{riemann_version}}"
+- name: Link Riemann release
+  file:
+    state: link
+    owner: "{{ansible_ssh_user}}"
+    group: "{{ansible_ssh_user}}"
+    path: "{{riemann_home_dir}}"
+    src: "{{riemann_root}}/riemann-{{riemann_version}}"
 
 - name: Install Riemann dashboard
   sudo: yes
-  gem:
-    name: riemann-dash
-    state: latest
-    user_install: no
+  shell: "/usr/local/rvm/bin/rvm all do gem install riemann-dash"
+  changed_when: False
 
 - name: Config used to start riemann
   sudo: yes

@@ -15,7 +15,7 @@ setgid {{ansible_ssh_user}}
 
 script
   cd {{ riemann_home_dir }}
-  exec ./bin/riemann ./etc/riemann.config -Xmx8G -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/logs/heapdumps/
+  exec ./bin/riemann ./etc/riemann.config {{ riemann_java_options }}
 end script
 
 post-start script
