@@ -10,4 +10,6 @@
   (udp-server {:host host :port {{riemann_udp_port}}})
   (ws-server  {:host host :port {{riemann_ws_port}}}))
 
+(periodically-expire 10 {:keep-keys [:host :service, :state, :metric]})
+
 (include "{{riemann_conf_dir}}/conf.d")
