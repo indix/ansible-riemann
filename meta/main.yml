@@ -30,3 +30,12 @@ dependencies:
       - openjdk-7-jdk
     oracle_java_versions:
       - oracle-jdk7-installer
+
+  - role: ansible-monit
+    sudo: yes
+    monit_services:
+      - name: ffwd
+        type: process
+        target: "{{riemann_pid_file}}"
+        start: "{{riemann_start_file}}"
+        stop: "{{riemann_stop_file}}"
