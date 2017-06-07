@@ -34,7 +34,7 @@ dependencies:
   - role: ansible-monit
     sudo: yes
     monit_services:
-      - name: ffwd
+      - name: riemann
         type: process
         target: "{{riemann_pid_file}}"
         start: "service riemann start"
