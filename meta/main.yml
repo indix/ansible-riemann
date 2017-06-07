@@ -37,5 +37,5 @@ dependencies:
       - name: riemann
         type: process
         target: "{{riemann_pid_file}}"
-        start: "service riemann start"
-        stop: "service riemann stop"
+        start: "/usr/bin/service riemann start"
+        stop: "/usr/bin/service riemann stop"
