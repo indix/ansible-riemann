@@ -37,5 +37,5 @@ dependencies:
       - name: ffwd
         type: process
         target: "{{riemann_pid_file}}"
-        start: "{{riemann_start_file}}"
-        stop: "{{riemann_stop_file}}"
+        start: "service riemann start"
+        stop: "service riemann stop"
