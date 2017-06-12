@@ -39,3 +39,6 @@ dependencies:
         target: "{{riemann_pid_file}}"
         start: "/usr/bin/service riemann start"
         stop: "/usr/bin/service riemann stop"
+
+  - role: ansible-telegraf
+    sudo: yes
