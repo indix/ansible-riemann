@@ -29,7 +29,7 @@ dependencies:
     openjdk_java_versions:
       - openjdk-7-jdk
     oracle_java_versions:
-      - oracle-jdk7-installer
+      - oracle-java8-installer
 
   - role: ansible-monit
     sudo: yes
